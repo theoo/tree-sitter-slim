@@ -1,0 +1,93 @@
+===
+UNSUPPORTED: Nested text content, when "smart text" is enable
+===
+
+body
+  h1 id="headline"
+    Welcome to my site.
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (child
+      (tag
+        (tag_name)
+        (floating_parameters
+          (floating_parameter_pair
+            (parameter_name)
+            (delimiter)
+            (parameter_value
+              (string_start)
+              (string_content)
+              (string_end))))
+        (child
+          (tag
+            (tag_name)
+            (text_inline)))))))
+
+===
+UNSUPPORTED: Interpolation in a parameter value
+===
+
+a href="http://#{url}" Goto the #{url}
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (floating_parameters
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (string_start)
+          (string_content)
+          (string_end))))
+    (text_inline
+      (ruby_interpolation
+        (ruby_inline)))))
+
+===
+UNSUPPORTED: Shortcuts/attributes, https://github.com/slim-template/slim?tab=readme-ov-file#attribute-shortcuts
+:error
+===
+
+&text name="user"
+&password name="pw"
+&submit
+
+---
+
+(source_file)
+
+===
+UNSUPPORTED: Shortcuts/lambda, https://github.com/slim-template/slim?tab=readme-ov-file#lambda-shortcuts
+:error
+===
+
+h1~title Hello
+~text~question.paragraph How are you?
+
+---
+
+(source_file)
+
+===
+UNSUPPORTED: Multiline stings in parameter values
+:error
+===
+
+img(
+  sizes="(max-width: 250px) 250px,
+        (max-width: 500px) 500px,
+        (max-width: 750px) 750px,
+        (max-width: 1000px) 1000px,
+        1500px"
+)
+
+---
+
+(source_file)

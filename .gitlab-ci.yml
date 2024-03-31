@@ -1,0 +1,18 @@
+stages:
+  - test
+
+tree-sitter-tests:
+  stage: test
+  image: node:23.2
+  before_script:
+    - npm install tree-sitter-cli
+  script:
+    - tree-sitter generate
+    - tree-sitter test > log.txt
+  artifacts:
+    when: always
+    paths:
+      - log.txt
+  only:
+    - main
+    - develop

@@ -1,0 +1,67 @@
+{
+  "name": "tree-sitter-slim",
+  "version": "0.0.1",
+  "repository": "github:theoo/tree-sitter-slim",
+  "license": "MIT",
+  "author": "Théo Reichel",
+  "contributors": [
+    "Théo Reichel <packages.headwear191@passmail.net>"
+  ],
+  "description": "slim template language support (https://github.com/slim-template/slim)",
+  "maintainers": [
+    "Théo Reichel <packages.headwear191@passmail.net>"
+  ],
+  "main": "bindings/node",
+  "types": "bindings/node",
+  "scripts": {
+    "test": "tree-sitter test",
+    "install": "node-gyp-build",
+    "prebuildify": "prebuildify --napi --strip",
+    "build": "tree-sitter generate --no-bindings",
+    "build-wasm": "tree-sitter build --wasm",
+    "lint": "eslint grammar.js"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.slim",
+      "file-types": [
+        "html.slim",
+        "slim"
+      ],
+      "injections": "queries/injections.scm",
+      "highlights": "queries/highlights.scm",
+      "locals": "queries/locals.scm",
+      "folds": "queries/folds.scm",
+      "indents": "queries/indents.scm"
+    }
+  ],
+  "keywords": [
+    "tree-sitter",
+    "slim",
+    "slim-template"
+  ],
+  "files": [
+    "grammar.js",
+    "binding.gyp",
+    "prebuilds/**",
+    "bindings/node/*",
+    "queries/*",
+    "src/**"
+  ],
+  "dependencies": {
+    "node-addon-api": "^7.1.0",
+    "node-gyp-build": "^4.8.0"
+  },
+  "peerDependencies": {
+    "tree-sitter": "^0.21.0"
+  },
+  "peerDependenciesMeta": {
+    "tree_sitter": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "eslint": "^9.6.0",
+    "prebuildify": "^6.0.0"
+  }
+}

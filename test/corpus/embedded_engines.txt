@@ -1,0 +1,51 @@
+===
+Embedded engines: example
+===
+
+coffee:
+  square = (x) -> x * x
+
+markdown:
+  #Header
+    Hello from #{"Markdown!"}
+    Second Line!
+
+p: markdown: Tag with **inline** markdown!
+
+---
+
+(source_file
+  (injector
+    (coffee_lang))
+  (injector
+    (markdown_lang
+      (ruby_interpolation
+        (ruby_inline))))
+  (tag
+    (tag_name)
+    (child
+      (injector
+        (markdown_lang)
+        (markdown_lang)))))
+
+===
+Embedded engines: example of scss with attributes
+===
+
+scss class="myClass":
+  $color: #f00;
+  body { color: $color; }
+
+---
+
+(source_file
+  (injector
+    (floating_parameters
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (string_start)
+          (string_content)
+          (string_end))))
+    (scss_lang)))

@@ -1,0 +1,68 @@
+===
+Inline HTML
+===
+
+<html>
+  head
+    title Example
+  <body>
+    - if articles.empty?
+    - else
+      table
+        - articles.each do |a|
+          <tr><td>#{a.name}</td><td>#{a.description}</td></tr>
+  </body>
+</html>
+
+---
+
+(source_file
+  (html_opening_tag
+    (tag_name))
+  (child
+    (tag
+      (tag_name)
+      (child
+        (tag
+          (tag_name)
+          (text_inline))))
+    (html_opening_tag
+      (tag_name))
+    (child
+      (directive_block
+        (directive
+          (directive_sign)
+          (ruby_inline)))
+      (directive_block
+        (directive
+          (directive_sign)
+          (ruby_inline))
+        (child
+          (tag
+            (tag_name)
+            (child
+              (directive_block
+                (directive
+                  (directive_sign)
+                  (ruby_inline))
+                (child
+                  (html_opening_tag
+                    (tag_name))
+                  (html_opening_tag
+                    (tag_name))
+                  (ruby_interpolation
+                    (ruby_inline))
+                  (html_closing_tag
+                    (tag_name))
+                  (html_opening_tag
+                    (tag_name))
+                  (ruby_interpolation
+                    (ruby_inline))
+                  (html_closing_tag
+                    (tag_name))
+                  (html_closing_tag
+                    (tag_name)))))))))
+    (html_closing_tag
+      (tag_name)))
+  (html_closing_tag
+    (tag_name)))

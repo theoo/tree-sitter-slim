@@ -1,0 +1,239 @@
+===
+Tag: Doctype declarations
+===
+
+doctype xml
+doctype xml ISO-8859-1
+doctype html
+doctype 5
+doctype 1.1
+doctype strict
+doctype frameset
+doctype mobile
+doctype basic
+doctype transitional
+doctype strict
+doctype frameset
+doctype transitional
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (text_inline))
+  (tag
+    (tag_name)
+    (text_inline))
+  (tag
+    (tag_name)
+    (text_inline))
+  (tag
+    (tag_name)
+    (text_inline))
+  (tag
+    (tag_name)
+    (text_inline))
+  (tag
+    (tag_name)
+    (text_inline))
+  (tag
+    (tag_name)
+    (text_inline))
+  (tag
+    (tag_name)
+    (text_inline))
+  (tag
+    (tag_name)
+    (text_inline))
+  (tag
+    (tag_name)
+    (text_inline))
+  (tag
+    (tag_name)
+    (text_inline))
+  (tag
+    (tag_name)
+    (text_inline))
+  (tag
+    (tag_name)
+    (text_inline)))
+
+===
+Tag: Closed tags
+===
+
+img src="image.png"/
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (floating_parameters
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (string_start)
+          (string_content)
+          (string_end))))
+    (inline_tag_close)))
+
+===
+Tag: Trailing and leading whitespace
+===
+
+a> href='url1'
+a> href='url2'
+a< href='url1'
+a< href='url2'
+a<> href='url1'
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (floating_parameters
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (string_start)
+          (string_content)
+          (string_end)))))
+  (tag
+    (tag_name)
+    (floating_parameters
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (string_start)
+          (string_content)
+          (string_end)))))
+  (tag
+    (tag_name)
+    (floating_parameters
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (string_start)
+          (string_content)
+          (string_end)))))
+  (tag
+    (tag_name)
+    (floating_parameters
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (string_start)
+          (string_content)
+          (string_end)))))
+  (tag
+    (tag_name)
+    (floating_parameters
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (string_start)
+          (string_content)
+          (string_end))))))
+
+===
+Tag: Inline tags (wrapped parameters)
+===
+
+ul
+  li.first: a[href="/a"] A link
+  li: a[href="/b"] B link
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (child
+      (tag
+        (tag_name)
+        (tag_class)
+        (child
+          (tag
+            (tag_name)
+            (wrapped_parameters
+              (bracket)
+              (wrapped_parameter_pair
+                (parameter_name)
+                (delimiter)
+                (parameter_value
+                  (string_start)
+                  (string_content)
+                  (string_end)))
+              (bracket))
+            (text_inline))))
+      (tag
+        (tag_name)
+        (child
+          (tag
+            (tag_name)
+            (wrapped_parameters
+              (bracket)
+              (wrapped_parameter_pair
+                (parameter_name)
+                (delimiter)
+                (parameter_value
+                  (string_start)
+                  (string_content)
+                  (string_end)))
+              (bracket))
+            (text_inline)))))))
+
+===
+Tag: Inline text content without parameter
+===
+
+body
+  h1 Welcome to my site.
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (child
+      (tag
+        (tag_name)
+        (text_inline)))))
+
+===
+Tag: Nested text content
+===
+
+body
+  h1 id="headline"
+    | Welcome to my site.
+    ' Welcome to my site.
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (child
+      (tag
+        (tag_name)
+        (floating_parameters
+          (floating_parameter_pair
+            (parameter_name)
+            (delimiter)
+            (parameter_value
+              (string_start)
+              (string_content)
+              (string_end))))
+        (child
+          (text_block)
+          (text_block))))))

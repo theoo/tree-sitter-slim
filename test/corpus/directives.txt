@@ -1,0 +1,136 @@
+===
+Directive: Control code
+===
+
+body
+  - if articles.empty?
+    | No inventory
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (child
+      (directive_block
+        (directive
+          (directive_sign)
+          (ruby_inline))
+        (child
+          (text_block))))))
+
+===
+Directive: Output
+===
+
+= javascript_include_tag \
+   "jquery",
+   "application"
+
+---
+
+(source_file
+  (directive_block
+    (directive
+      (directive_sign)
+      (ruby_inline))))
+
+===
+Directive: Output with trailing white space
+===
+
+=> render partial: 'dry'
+
+---
+
+(source_file
+  (directive_block
+    (directive
+      (directive_sign)
+      (ruby_inline))))
+
+===
+Directive: Output with leading white space
+===
+
+=< I18n.t('some.string')
+
+---
+
+(source_file
+  (directive_block
+    (directive
+      (directive_sign)
+      (ruby_inline))))
+
+===
+Directive: Output without HTML escaping
+===
+
+== some_raw_html(to: { render: 'without HTML escaped' })
+
+---
+
+(source_file
+  (directive_block
+    (directive
+      (directive_sign)
+      (ruby_inline))))
+
+===
+Directive: Inline
+===
+
+body
+  h1 id="headline" = page_headline
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (child
+      (tag
+        (tag_name)
+        (floating_parameters
+          (floating_parameter_pair
+            (parameter_name)
+            (delimiter)
+            (parameter_value
+              (string_start)
+              (string_content)
+              (string_end))))
+        (directive_inline
+          (directive
+            (directive_sign)
+            (ruby_inline)))))))
+
+===
+Directive: Nested
+===
+
+body
+  h1 id="headline"
+    = page_headline
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (child
+      (tag
+        (tag_name)
+        (floating_parameters
+          (floating_parameter_pair
+            (parameter_name)
+            (delimiter)
+            (parameter_value
+              (string_start)
+              (string_content)
+              (string_end))))
+        (child
+          (directive_block
+            (directive
+              (directive_sign)
+              (ruby_inline))))))))

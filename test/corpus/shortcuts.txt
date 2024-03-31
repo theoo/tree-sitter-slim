@@ -1,0 +1,57 @@
+===
+Shortcuts: tags
+===
+
+c.content Text
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (tag_class)
+    (text_inline)))
+
+===
+Shortcuts: id and class
+===
+
+body
+  h1#headline
+    = page_headline
+  h2#tagline.small.tagline
+    = page_tagline
+  .content
+    = show_content
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (child
+      (tag
+        (tag_name)
+        (tag_id)
+        (child
+          (directive_block
+            (directive
+              (directive_sign)
+              (ruby_inline)))))
+      (tag
+        (tag_name)
+        (tag_id)
+        (tag_class)
+        (tag_class)
+        (child
+          (directive_block
+            (directive
+              (directive_sign)
+              (ruby_inline)))))
+      (tag
+        (tag_class)
+        (child
+          (directive_block
+            (directive
+              (directive_sign)
+              (ruby_inline))))))))

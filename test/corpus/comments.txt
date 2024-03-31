@@ -1,0 +1,67 @@
+https://github.com/slim-template/slim?tab=readme-ov-file#code-comment-
+===
+Comment: Code comment
+===
+
+body
+  p
+    / This line won't get displayed.
+      Neither does this line.
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (child
+      (tag
+        (tag_name)
+        (child
+          (comment))))))
+
+===
+Comment: Code comment
+===
+
+/ The whole code block will be commented
+/ table
+    th
+      td
+    tr
+      td
+
+---
+
+(source_file
+  (comment)
+  (comment))
+
+===
+Comment: Code HTML comment
+===
+
+/! This will get displayed as html comments.
+div
+  /! This as well!
+    And this should be part of the last comment
+
+---
+
+(source_file
+  (comment)
+  (tag
+    (tag_name)
+    (child
+      (comment))))
+
+===
+Comment: Code IE conditional comment
+===
+
+/[if IE]
+  p Get a better browser.
+
+---
+
+(source_file
+  (comment))

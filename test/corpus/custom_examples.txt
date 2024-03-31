@@ -1,0 +1,156 @@
+===
+Custom examples: wrapped parameters, ruby fragments
+===
+
+a(href=url alt=l styles=function('param') class=[:sym1, :sym2, 'str1', "str2"])
+span(name=(works? ? 'yes' : 'no'))
+h1(id=dom_id(:header) data=:item)
+section(attr=p attr2=p.name attr3=parameter.name attr4=parameter.size('hex'))
+p(name=t('path.to.translation') alt=I18n.t('another.translation'))
+div(class=Some::Path::To::Class.classes)
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (wrapped_parameters
+      (bracket)
+      (wrapped_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (ruby_inline)))
+      (wrapped_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (ruby_inline)))
+      (wrapped_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (ruby_inline)))
+      (wrapped_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (ruby_inline)))
+      (bracket)))
+  (tag
+    (tag_name)
+    (wrapped_parameters
+      (bracket)
+      (wrapped_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (ruby_inline)))
+      (bracket)))
+  (tag
+    (tag_name)
+    (wrapped_parameters
+      (bracket)
+      (wrapped_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (ruby_inline)))
+      (wrapped_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value))
+      (bracket)))
+  (tag
+    (tag_name)
+    (wrapped_parameters
+      (bracket)
+      (wrapped_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (ruby_inline)))
+      (wrapped_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (ruby_inline)))
+      (wrapped_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (ruby_inline)))
+      (wrapped_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (ruby_inline)))
+      (bracket)))
+  (tag
+    (tag_name)
+    (wrapped_parameters
+      (bracket)
+      (wrapped_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (ruby_inline)))
+      (wrapped_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (ruby_inline)))
+      (bracket)))
+  (tag
+    (tag_name)
+    (wrapped_parameters
+      (bracket)
+      (wrapped_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (ruby_inline)))
+      (bracket))))
+
+===
+Custom examples: wrapped parameters, multi-line strings (escaped)
+===
+
+img(
+  sizes="(max-width: 250px) 250px,\
+        (max-width: 500px) 500px,\
+        (max-width: 750px) 750px,\
+        (max-width: 1000px) 1000px,\
+        1500px"
+)
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (wrapped_parameters
+      (bracket)
+      (wrapped_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (string_start)
+          (string_content)
+          (string_end)))
+      (bracket))))
+
+===
+Custom examples: wrapped parameters with hash splat
+===
+
+img(*sizes)
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (wrapped_parameters
+      (bracket)
+      (splat_parameters
+        (ruby_inline))
+      (bracket))))

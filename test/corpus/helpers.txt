@@ -1,0 +1,133 @@
+===
+Helpers: capturing and includes
+===
+
+p
+  = headline do
+    ' Hello
+    = user.name
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (child
+      (directive_block
+        (directive
+          (directive_sign)
+          (ruby_inline))
+        (child
+          (text_block)
+          (directive_block
+            (directive
+              (directive_sign)
+              (ruby_inline))))))))
+
+===
+Helpers: capturing and includes without 'do'
+===
+
+p
+  = headline
+    ' Hello
+    = user.name
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (child
+      (directive_block
+        (directive
+          (directive_sign)
+          (ruby_inline))
+        (child
+          (text_block)
+          (directive_block
+            (directive
+              (directive_sign)
+              (ruby_inline))))))))
+
+===
+Helpers: capturing to local variable
+===
+
+/ The captured_content variable must be known by the Binding beforehand.
+= capture_to_local captured_content=:captured_content
+  p This will be captured in the variable captured_content
+= captured_content
+
+---
+
+(source_file
+  (comment)
+  (directive_block
+    (directive
+      (directive_sign)
+      (ruby_inline))
+    (child
+      (tag
+        (tag_name)
+        (text_inline))))
+  (directive_block
+    (directive
+      (directive_sign)
+      (ruby_inline))))
+
+===
+Helpers: capture enumerables
+===
+
+- links = { 'https://slim-template.github.io' => 'The Slim Template Language' }
+= capture link_list=:link_list, links do |url, text|
+  a href=url = text
+
+---
+
+(source_file
+  (directive_block
+    (directive
+      (directive_sign)
+      (ruby_inline)))
+  (directive_block
+    (directive
+      (directive_sign)
+      (ruby_inline))
+    (child
+      (tag
+        (tag_name)
+        (floating_parameters
+          (floating_parameter_pair
+            (parameter_name)
+            (delimiter)
+            (parameter_value
+              (ruby_inline))))
+        (directive_inline
+          (directive
+            (directive_sign)
+            (ruby_inline)))))))
+
+===
+Helpers: include helper
+===
+
+nav = include_slim 'menu'
+section = include_slim 'content'
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (directive_inline
+      (directive
+        (directive_sign)
+        (ruby_inline))))
+  (tag
+    (tag_name)
+    (directive_inline
+      (directive
+        (directive_sign)
+        (ruby_inline)))))

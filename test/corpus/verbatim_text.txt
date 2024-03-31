@@ -1,0 +1,77 @@
+https://github.com/slim-template/slim?tab=readme-ov-file#verbatim-text-
+===
+Verbatim text
+===
+
+body
+  p
+    |
+      This is a test of the text block.
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (child
+      (tag
+        (tag_name)
+        (child
+          (text_block))))))
+
+===
+Verbatim text multiline
+===
+
+body
+  p
+    | This line is on the left margin.
+       This line will have one space in front of it.
+         This line will have two spaces in front of it.
+           And so on...
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (child
+      (tag
+        (tag_name)
+        (child
+          (text_block))))))
+
+===
+Verbatim text with leading and/or trailing white space
+===
+
+| This line will not have any extra white space.
+|  This line will have a leading space, but it is difficult to see.
+|< This line will have a leading white space.
+|> This line will have a trailing white space.
+|<> This line will have both leading and trailing white space.
+
+---
+
+(source_file
+  (text_block)
+  (text_block)
+  (text_block)
+  (text_block)
+  (text_block))
+
+===
+Verbatim text with trailing white space
+===
+
+div
+  ' This line will have any extra white space.
+    And works on multiple lines.
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (child
+      (text_block))))
+

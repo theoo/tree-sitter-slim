@@ -1,0 +1,76 @@
+===
+Interpolation: in parameters
+===
+
+a href="http://#{url}"
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (floating_parameters
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (string_start)
+          (string_content)
+          (string_end))))))
+
+===
+Interpolation: in text
+===
+
+a Goto the #{url}
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (text_inline
+      (ruby_interpolation
+        (ruby_inline)))))
+
+===
+Interpolation: in text, extended
+===
+
+body
+  h1 Welcome #{current_user.name} to the show.
+  | Unescaped #{{content}} is also possible.
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (child
+      (tag
+        (tag_name)
+        (text_inline
+          (ruby_interpolation
+            (ruby_inline))))
+      (text_block
+        (ruby_interpolation
+          (ruby_inline))))))
+
+===
+Interpolation: in text, escaping
+===
+
+body
+  h1 Welcome \#{current_user.name} to the show.
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (child
+      (tag
+        (tag_name)
+        (text_inline
+          (ruby_interpolation
+            (ruby_inline)))))))

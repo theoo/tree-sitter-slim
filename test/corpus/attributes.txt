@@ -1,0 +1,556 @@
+===
+Attributes: text attributes
+===
+
+a href="https://slim-template.github.io" title='Slim Homepage' Goto the Slim homepage
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (floating_parameters
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (string_start)
+          (string_content)
+          (string_end)))
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (string_start)
+          (string_content)
+          (string_end))))
+    (text_inline)))
+
+===
+Attributes: wrappers
+===
+
+body
+  h1(id="logo") = page_logo
+  h2[id="tagline" class="small tagline"] = page_tagline
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (child
+      (tag
+        (tag_name)
+        (wrapped_parameters
+          (bracket)
+          (wrapped_parameter_pair
+            (parameter_name)
+            (delimiter)
+            (parameter_value
+              (string_start)
+              (string_content)
+              (string_end)))
+          (bracket))
+        (text_inline))
+      (tag
+        (tag_name)
+        (wrapped_parameters
+          (bracket)
+          (wrapped_parameter_pair
+            (parameter_name)
+            (delimiter)
+            (parameter_value
+              (string_start)
+              (string_content)
+              (string_end)))
+          (wrapped_parameter_pair
+            (parameter_name)
+            (delimiter)
+            (parameter_value
+              (string_start)
+              (string_content)
+              (string_end)))
+          (bracket))
+        (text_inline)))))
+
+===
+Attributes: multiline wrappers
+===
+
+h2[id="tagline"
+   class="small tagline"] = page_tagline
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (wrapped_parameters
+      (bracket)
+      (wrapped_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (string_start)
+          (string_content)
+          (string_end)))
+      (wrapped_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (string_start)
+          (string_content)
+          (string_end)))
+      (bracket))
+    (text_inline)))
+
+===
+Attributes: floating parameters (with spaces)
+===
+
+h1 id = "logo" = page_logo
+h2 [ id = "tagline" ] = page_tagline
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (floating_parameters
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (string_start)
+          (string_content)
+          (string_end))))
+    (directive_inline
+      (directive
+        (directive_sign)
+        (ruby_inline))))
+  (tag
+    (tag_name)
+    (wrapped_parameters
+      (bracket)
+      (wrapped_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (string_start)
+          (string_content)
+          (string_end)))
+      (bracket))
+    (text_inline)))
+
+===
+Attributes: text interpolation in the quoted attributes
+===
+
+a href="http://#{url}" Goto the #{url}
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (floating_parameters
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (string_start)
+          (string_content)
+          (string_end))))
+    (text_inline
+      (ruby_interpolation
+        (ruby_inline)))))
+
+===
+Attributes: raw value (not escaped)
+===
+
+a href=="&amp;"
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (floating_parameters
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (string_start)
+          (string_content)
+          (string_end))))))
+
+===
+Attributes: break quoted attributes with backslash
+===
+
+a data-title="help" data-content="extremely long help text that goes on\
+  and on and on and then starts over...."
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (floating_parameters
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (string_start)
+          (string_content)
+          (string_end)))
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (string_start)
+          (string_content)
+          (string_end))))))
+
+===
+Attributes: ruby
+===
+
+body
+  table
+    - for user in users
+      td id="user_#{user.id}" class=user.role
+        a href=user_action(user, :edit) Edit #{user.name}
+        a href=(path_to_user user) = user.name
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (child
+      (tag
+        (tag_name)
+        (child
+          (directive_block
+            (directive
+              (directive_sign)
+              (ruby_inline))
+            (child
+              (tag
+                (tag_name)
+                (floating_parameters
+                  (floating_parameter_pair
+                    (parameter_name)
+                    (delimiter)
+                    (parameter_value
+                      (string_start)
+                      (string_content)
+                      (string_end)))
+                  (floating_parameter_pair
+                    (parameter_name)
+                    (delimiter)
+                    (parameter_value
+                      (ruby_inline))))
+                (child
+                  (tag
+                    (tag_name)
+                    (floating_parameters
+                      (floating_parameter_pair
+                        (parameter_name)
+                        (delimiter)
+                        (parameter_value
+                          (ruby_inline))))
+                    (text_inline
+                      (ruby_interpolation
+                        (ruby_inline))))
+                  (tag
+                    (tag_name)
+                    (floating_parameters
+                      (floating_parameter_pair
+                        (parameter_name)
+                        (delimiter)
+                        (parameter_value
+                          (ruby_inline))))
+                    (directive_inline
+                      (directive
+                        (directive_sign)
+                        (ruby_inline)))))))))))))
+
+===
+Attributes: ruby not escaped
+===
+
+a href==action_path(:start)
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (floating_parameters
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (ruby_inline))))))
+
+===
+Attributes: boolean
+===
+
+input type="text" disabled="disabled"
+input type="text" disabled=true
+input(type="text" disabled)
+
+input type="text"
+input type="text" disabled=false
+input type="text" disabled=nil
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (floating_parameters
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (string_start)
+          (string_content)
+          (string_end)))
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (string_start)
+          (string_content)
+          (string_end)))))
+  (tag
+    (tag_name)
+    (floating_parameters
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (string_start)
+          (string_content)
+          (string_end)))
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (ruby_inline)))))
+  (tag
+    (tag_name)
+    (wrapped_parameters
+      (bracket)
+      (wrapped_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (string_start)
+          (string_content)
+          (string_end)))
+      (wrapped_parameter_pair
+        (parameter_name))
+      (bracket)))
+  (tag
+    (tag_name)
+    (floating_parameters
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (string_start)
+          (string_content)
+          (string_end)))))
+  (tag
+    (tag_name)
+    (floating_parameters
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (string_start)
+          (string_content)
+          (string_end)))
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (ruby_inline)))))
+  (tag
+    (tag_name)
+    (floating_parameters
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (string_start)
+          (string_content)
+          (string_end)))
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (ruby_inline))))))
+
+===
+Attributes: merging
+===
+
+a.menu class="highlight" href="https://slim-template.github.io/" slim-template.github.io
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (tag_class)
+    (floating_parameters
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (string_start)
+          (string_content)
+          (string_end)))
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (string_start)
+          (string_content)
+          (string_end))))
+    (text_inline)))
+
+===
+Attributes: merging array
+===
+
+a class=["menu","highlight"]
+a class=:menu,:highlight
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (floating_parameters
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (ruby_inline)))))
+  (tag
+    (tag_name)
+    (floating_parameters
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value)))))
+
+===
+Attributes: splats
+===
+
+.card*{'data-url'=>place_path(place), 'data-id'=>place.id}
+.card*{'data-url'=>place_path(place), 'data-id'=>place.id} /
+#card*{'data-url'=>place_path(place), 'data-id'=>place.id} just text
+div*{'data-url'=>place_path(place), 'data-id'=>place.id} = directive(place.name)
+
+---
+
+(source_file
+  (tag
+    (tag_class)
+    (splat_parameters
+      (ruby_inline)))
+  (tag
+    (tag_class)
+    (splat_parameters
+      (ruby_inline))
+    (inline_tag_close))
+  (tag
+    (tag_id)
+    (splat_parameters
+      (ruby_inline))
+    (text_inline))
+  (tag
+    (tag_name)
+    (splat_parameters
+      (ruby_inline))
+    (directive_inline
+      (directive
+        (directive_sign)
+        (ruby_inline)))))
+
+===
+Attributes: splats with methods
+===
+
+.card *method_which_returns_hash = place.name
+.card *@hash_instance_variable = place.name
+.first *{class: [:second, :third]} Text
+
+---
+
+(source_file
+  (tag
+    (tag_class)
+    (splat_parameters
+      (ruby_inline))
+    (directive_inline
+      (directive
+        (directive_sign)
+        (ruby_inline))))
+  (tag
+    (tag_class)
+    (splat_parameters
+      (ruby_inline))
+    (directive_inline
+      (directive
+        (directive_sign)
+        (ruby_inline))))
+  (tag
+    (tag_class)
+    (splat_parameters
+      (ruby_inline))
+    (text_inline)))
+
+===
+Attributes: dynamic tags
+===
+
+ruby:
+  def self.a_unless_current
+    @page_current ? {tag: 'span'} : {tag: 'a', href: 'https://slim-template.github.io/'}
+  end
+- @page_current = true
+*a_unless_current Link
+- @page_current = false
+*a_unless_current Link
+
+---
+
+(source_file
+  (injector
+    (ruby_lang))
+  (directive_block
+    (directive
+      (directive_sign)
+      (ruby_inline)))
+  (splat_tags
+    (ruby_inline)
+    (text_inline))
+  (directive_block
+    (directive
+      (directive_sign)
+      (ruby_inline)))
+  (splat_tags
+    (ruby_inline)
+    (text_inline)))

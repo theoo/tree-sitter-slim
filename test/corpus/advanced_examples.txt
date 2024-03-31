@@ -1,0 +1,183 @@
+===
+Advanced Syntax Example from https://github.com/slim-template/slim?tab=readme-ov-file#syntax-example
+:fail-fast
+===
+
+doctype html
+html
+  head
+    title Slim Examples
+    meta name="keywords" content="template language"
+    meta name="author" content=author
+    link rel="icon" type="image/png" href=file_path("favicon.png")
+    javascript:
+      alert('Slim supports embedded javascript!')
+
+  body
+    h1 Markup examples
+
+    #content
+      p This example shows you how a basic Slim file looks.
+
+    == yield
+
+    - if items.any?
+      table#items
+        - for item in items
+          tr
+            td.name = item.name
+            td.price = item.price
+    - else
+      p No items found. Please add some inventory.
+        Thank you!
+
+    div id="footer"
+      == render 'footer'
+      | Copyright &copy; #{@year} #{@author}
+
+---
+
+(source_file
+  (tag
+    name: (tag_name)
+    (text_inline))
+  (tag
+    name: (tag_name)
+    (child
+      (tag
+        name: (tag_name)
+        (child
+          (tag
+            name: (tag_name)
+            (text_inline))
+          (tag
+            name: (tag_name)
+            parameters: (floating_parameters
+              (floating_parameter_pair
+                name: (parameter_name)
+                (delimiter)
+                value: (parameter_value
+                  (string_start)
+                  (string_content)
+                  (string_end)))
+              (floating_parameter_pair
+                name: (parameter_name)
+                (delimiter)
+                value: (parameter_value
+                  (string_start)
+                  (string_content)
+                  (string_end)))))
+          (tag
+            name: (tag_name)
+            parameters: (floating_parameters
+              (floating_parameter_pair
+                name: (parameter_name)
+                (delimiter)
+                value: (parameter_value
+                  (string_start)
+                  (string_content)
+                  (string_end)))
+              (floating_parameter_pair
+                name: (parameter_name)
+                (delimiter)
+                value: (parameter_value
+                  injection: (ruby_inline)))))
+          (tag
+            name: (tag_name)
+            parameters: (floating_parameters
+              (floating_parameter_pair
+                name: (parameter_name)
+                (delimiter)
+                value: (parameter_value
+                  (string_start)
+                  (string_content)
+                  (string_end)))
+              (floating_parameter_pair
+                name: (parameter_name)
+                (delimiter)
+                value: (parameter_value
+                  (string_start)
+                  (string_content)
+                  (string_end)))
+              (floating_parameter_pair
+                name: (parameter_name)
+                (delimiter)
+                value: (parameter_value
+                  injection: (ruby_inline)))))
+          (injector
+            injection: (javascript_lang))))
+      (tag
+        name: (tag_name)
+        (child
+          (tag
+            name: (tag_name)
+            (text_inline))
+          (tag
+            id: (tag_id)
+            (child
+              (tag
+                name: (tag_name)
+                (text_inline))))
+          (directive_block
+            (directive
+              (directive_sign)
+              injection: (ruby_inline)))
+          (directive_block
+            (directive
+              (directive_sign)
+              injection: (ruby_inline))
+            (child
+              (tag
+                name: (tag_name)
+                id: (tag_id)
+                (child
+                  (directive_block
+                    (directive
+                      (directive_sign)
+                      injection: (ruby_inline))
+                    (child
+                      (tag
+                        name: (tag_name)
+                        (child
+                          (tag
+                            name: (tag_name)
+                            class: (tag_class)
+                            (directive_inline
+                              (directive
+                                (directive_sign)
+                                injection: (ruby_inline))))
+                          (tag
+                            name: (tag_name)
+                            class: (tag_class)
+                            (directive_inline
+                              (directive
+                                (directive_sign)
+                                injection: (ruby_inline))))))))))))
+          (directive_block
+            (directive
+              (directive_sign)
+              injection: (ruby_inline))
+            (child
+              (tag
+                name: (tag_name)
+                (text_inline))))
+          (tag
+            name: (tag_name)
+            parameters: (floating_parameters
+              (floating_parameter_pair
+                name: (parameter_name)
+                (delimiter)
+                value: (parameter_value
+                  (string_start)
+                  (string_content)
+                  (string_end))))
+            (child
+              (directive_block
+                (directive
+                  (directive_sign)
+                  injection: (ruby_inline)))
+              (text_block
+                (ruby_interpolation
+                  injection: (ruby_inline))
+                (ruby_interpolation
+                  injection: (ruby_inline))))))))))
