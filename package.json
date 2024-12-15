@@ -23,16 +23,18 @@
   },
   "tree-sitter": [
     {
+      "name": "slim",
+      "camelcase": "Slim",
       "scope": "source.slim",
       "file-types": [
         "html.slim",
         "slim"
       ],
-      "injections": "queries/injections.scm",
-      "highlights": "queries/highlights.scm",
-      "locals": "queries/locals.scm",
       "folds": "queries/folds.scm",
-      "indents": "queries/indents.scm"
+      "highlights": "queries/highlights.scm",
+      "indents": "queries/indents.scm",
+      "injections": "queries/injections.scm",
+      "locals": "queries/locals.scm"
     }
   ],
   "keywords": [
@@ -46,7 +48,8 @@
     "prebuilds/**",
     "bindings/node/*",
     "queries/*",
-    "src/**"
+    "src/**",
+    "*.wasm"
   ],
   "dependencies": {
     "node-addon-api": "^7.1.0",
