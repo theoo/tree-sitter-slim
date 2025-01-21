@@ -18,6 +18,11 @@
 
 (bracket) @punctuation.bracket
 
+[
+  "#{"
+  "}"
+] @punctuation.special
+
 (delimiter) @tag.delimiter
 
 (parameter_name) @variable.parameter
