@@ -288,11 +288,15 @@ module.exports = grammar({
 
     // "optional" cannot be set at the function level because empty strings are prohibited
     _ruby_fragment: $ => choice(
+      // prec is require to avoid crashing when opening a parenthesis
       // Parentheses
+      prec.right(1, '('),
       brackets_pair($, '(', /[^()]+/, ')'),
       // Braces
+      prec.right(1, '{'),
       brackets_pair($, '{', /[^{}]+/, '}'),
       // Square brackets
+      prec.right(1, '['),
       brackets_pair($, '[', /[^\[\]]+/, ']')
     ),
     _ruby_multiline: $ => repeat1(

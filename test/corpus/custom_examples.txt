@@ -154,3 +154,42 @@ img(*sizes)
       (splat_parameters
         (ruby_inline))
       (bracket))))
+
+===
+Custom examples: Partial ruby parenthesis (issue https://gitlab.com/theoreichel/tree-sitter-slim/-/issues/1)
+===
+
+- l(
+- l[
+- l{
+- I18n.l("word.with.partial.paren(")
+- undone_ary = [:test, []
+- [ } ]
+
+---
+
+(source_file
+  (directive_block
+    (directive
+      (directive_sign)
+      (ruby_inline)))
+  (directive_block
+    (directive
+      (directive_sign)
+      (ruby_inline)))
+  (directive_block
+    (directive
+      (directive_sign)
+      (ruby_inline)))
+  (directive_block
+    (directive
+      (directive_sign)
+      (ruby_inline)))
+  (directive_block
+    (directive
+      (directive_sign)
+      (ruby_inline)))
+  (directive_block
+    (directive
+      (directive_sign)
+      (ruby_inline))))

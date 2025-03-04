@@ -2183,6 +2183,14 @@
       "type": "CHOICE",
       "members": [
         {
+          "type": "PREC_RIGHT",
+          "value": 1,
+          "content": {
+            "type": "STRING",
+            "value": "("
+          }
+        },
+        {
           "type": "SEQ",
           "members": [
             {
@@ -2212,6 +2220,14 @@
           ]
         },
         {
+          "type": "PREC_RIGHT",
+          "value": 1,
+          "content": {
+            "type": "STRING",
+            "value": "{"
+          }
+        },
+        {
           "type": "SEQ",
           "members": [
             {
@@ -2239,6 +2255,14 @@
               "value": "}"
             }
           ]
+        },
+        {
+          "type": "PREC_RIGHT",
+          "value": 1,
+          "content": {
+            "type": "STRING",
+            "value": "["
+          }
         },
         {
           "type": "SEQ",
