@@ -8,11 +8,11 @@ tree-sitter-tests:
     - npm install tree-sitter-cli
   script:
     - tree-sitter generate
-    - tree-sitter test > log.txt
-  artifacts:
-    when: always
-    paths:
-      - log.txt
+    - tree-sitter test
+  # artifacts:
+  #   when: always
+  #   paths:
+  #     - log.txt
   only:
     - main
     - develop
