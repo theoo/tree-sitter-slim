@@ -74,3 +74,26 @@ body
         (text_inline
           (ruby_interpolation
             (ruby_inline)))))))
+
+===
+Interpolation in a parameter value
+===
+
+a href="http://#{url}" Goto the #{url}
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (floating_parameters
+      (floating_parameter_pair
+        (parameter_name)
+        (delimiter)
+        (parameter_value
+          (string_start)
+          (string_content)
+          (string_end))))
+    (text_inline
+      (ruby_interpolation
+        (ruby_inline)))))

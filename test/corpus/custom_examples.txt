@@ -193,3 +193,34 @@ Custom examples: Partial ruby parenthesis (issue https://gitlab.com/theoreichel/
     (directive
       (directive_sign)
       (ruby_inline))))
+
+===
+Nested text content, when "smart text" is enable
+===
+
+body
+  h1 id="headline"
+    Welcome to my site.
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (child
+      (tag
+        (tag_name)
+        (floating_parameters
+          (floating_parameter_pair
+            (parameter_name)
+            (delimiter)
+            (parameter_value
+              (string_start)
+              (string_content)
+              (string_end))))
+        (child
+          (tag
+            (tag_name)
+            (text_inline)))))))
+
+
