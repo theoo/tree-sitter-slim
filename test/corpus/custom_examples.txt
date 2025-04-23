@@ -156,43 +156,55 @@ img(*sizes)
       (bracket))))
 
 ===
-Custom examples: Partial ruby parenthesis (issue https://gitlab.com/theoreichel/tree-sitter-slim/-/issues/1)
+Custom examples: Partial ruby parenthesis "("
+:error
 ===
 
 - l(
-- l[
-- l{
-- I18n.l("word.with.partial.paren(")
-- undone_ary = [:test, []
-- [ } ]
 
 ---
 
-(source_file
-  (directive_block
-    (directive
-      (directive_sign)
-      (ruby_inline)))
-  (directive_block
-    (directive
-      (directive_sign)
-      (ruby_inline)))
-  (directive_block
-    (directive
-      (directive_sign)
-      (ruby_inline)))
-  (directive_block
-    (directive
-      (directive_sign)
-      (ruby_inline)))
-  (directive_block
-    (directive
-      (directive_sign)
-      (ruby_inline)))
-  (directive_block
-    (directive
-      (directive_sign)
-      (ruby_inline))))
+===
+Custom examples: Partial ruby parenthesis "["
+:error
+===
+
+- l[
+
+---
+
+===
+Custom examples: Partial ruby parenthesis "{"
+:error
+===
+
+- l{
+
+---
+
+===
+Custom examples: Partial ruby parenthesis "various"
+:error
+===
+
+- I18n.l("word.with.partial.paren(")
+- undone_ary = [:test, []
+- [ } ]
+- (:
+- ["test"].map(&:
+
+---
+
+===
+Custom examples: Partial ruby parenthesis on multiline code
+:error
+===
+
+- l("this test is %{amazing} and %{color}",
+    amazing,
+    color
+
+---
 
 ===
 Nested text content, when "smart text" is enable

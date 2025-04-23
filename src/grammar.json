@@ -2183,19 +2183,15 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "PREC_RIGHT",
-          "value": 1,
-          "content": {
-            "type": "STRING",
-            "value": "("
-          }
-        },
-        {
           "type": "SEQ",
           "members": [
             {
-              "type": "STRING",
-              "value": "("
+              "type": "PREC_RIGHT",
+              "value": 1,
+              "content": {
+                "type": "STRING",
+                "value": "("
+              }
             },
             {
               "type": "REPEAT",
@@ -2204,7 +2200,7 @@
                 "members": [
                   {
                     "type": "PATTERN",
-                    "value": "[^()]+"
+                    "value": "[^()\\r\\n]+"
                   },
                   {
                     "type": "SYMBOL",
@@ -2220,19 +2216,15 @@
           ]
         },
         {
-          "type": "PREC_RIGHT",
-          "value": 1,
-          "content": {
-            "type": "STRING",
-            "value": "{"
-          }
-        },
-        {
           "type": "SEQ",
           "members": [
             {
-              "type": "STRING",
-              "value": "{"
+              "type": "PREC_RIGHT",
+              "value": 1,
+              "content": {
+                "type": "STRING",
+                "value": "{"
+              }
             },
             {
               "type": "REPEAT",
@@ -2241,7 +2233,7 @@
                 "members": [
                   {
                     "type": "PATTERN",
-                    "value": "[^{}]+"
+                    "value": "[^{}\\r\\n]+"
                   },
                   {
                     "type": "SYMBOL",
@@ -2257,19 +2249,15 @@
           ]
         },
         {
-          "type": "PREC_RIGHT",
-          "value": 1,
-          "content": {
-            "type": "STRING",
-            "value": "["
-          }
-        },
-        {
           "type": "SEQ",
           "members": [
             {
-              "type": "STRING",
-              "value": "["
+              "type": "PREC_RIGHT",
+              "value": 1,
+              "content": {
+                "type": "STRING",
+                "value": "["
+              }
             },
             {
               "type": "REPEAT",
@@ -2278,7 +2266,7 @@
                 "members": [
                   {
                     "type": "PATTERN",
-                    "value": "[^\\[\\]]+"
+                    "value": "[^\\[\\]\\r\\n]+"
                   },
                   {
                     "type": "SYMBOL",

@@ -288,16 +288,12 @@ module.exports = grammar({
 
     // "optional" cannot be set at the function level because empty strings are prohibited
     _ruby_fragment: $ => choice(
-      // prec is require to avoid crashing when opening a parenthesis
       // Parentheses
-      prec.right(1, '('),
-      brackets_pair($, '(', /[^()]+/, ')'),
+      brackets_pair($, '(', /[^()\r\n]+/, ')'),
       // Braces
-      prec.right(1, '{'),
-      brackets_pair($, '{', /[^{}]+/, '}'),
+      brackets_pair($, '{', /[^{}\r\n]+/, '}'),
       // Square brackets
-      prec.right(1, '['),
-      brackets_pair($, '[', /[^\[\]]+/, ']')
+      brackets_pair($, '[', /[^\[\]\r\n]+/, ']')
     ),
     _ruby_multiline: $ => repeat1(
       choice(
@@ -477,7 +473,8 @@ function floating_char(char) {
  */
 function brackets_pair($, opening_char, content_regex, closing_char) {
   return seq(
-    opening_char,
+    // prec is require to avoid crashing when opening a parenthesis
+    prec.right(1, opening_char),
     repeat(
       choice(
         content_regex,
