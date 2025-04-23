@@ -54,14 +54,8 @@ The `unsupported.txt` test file lists unsupported features:
 
 Won't be fixed:
 
-- Nested text content, when "smart text" is enable
 - [Shortcuts/attributes](https://github.com/slim-template/slim?tab=readme-ov-file#attribute-shortcuts)
 - [Shortcuts/lambda](https://github.com/slim-template/slim?tab=readme-ov-file#lambda-shortcuts)
-
-Should be fixed:
-
-- Interpolation in a parameter value
-- Multiline stings in parameter values
 
 ## Parser, Scanner and Performances
 
