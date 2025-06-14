@@ -18,7 +18,9 @@ Performance will improve once the syntax tree stabilizes. That said, the plugin 
 
 ## Installation
 
-This documentation supports only [neovim](https://neovim.io) with [Lazy](https://github.com/folke/lazy.nvim) and [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
+### Neovim
+
+[neovim](https://neovim.io) with [Lazy](https://github.com/folke/lazy.nvim) and [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
 
 Running the following command to build an install the parser:
 
@@ -29,6 +31,28 @@ cp slim.so ~/.local/share/nvim/lazy/nvim-treesitter/parser/ && \
 mkdir -p ~/.local/share/nvim/lazy/nvim-treesitter/queries/slim && \
 cp queries/* ~/.local/share/nvim/lazy/nvim-treesitter/queries/slim/
 ```
+
+### Helix
+
+Add the following sections to `~/.config/helix/languages.toml`
+
+```toml
+[[language]]
+name = "slim"
+scope = "source.slim"
+file-types = [ "slim" ]
+comment-tokens = [ "/", "/!" ]
+
+[[grammar]]
+name = "slim"
+source = { git = "https://gitlab.com/theoreichel/tree-sitter-slim", rev = "REV" }
+```
+
+Update `REV` with the last commit hash SHA.
+
+Copy queries found in the `queries` folder of this repo to `~/.config/helix/runtime/queries/`.
+
+The run `helix --gramar fetch` and you should be good to go. Use `helix --health` to check the languages capabilities.
 
 ## Syntax tree
 
